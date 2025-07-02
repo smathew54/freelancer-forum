@@ -31,7 +31,9 @@ const main = () => {
     //call this one on an increment freeLancers();
     $app.append($header);
     $app.innerHTML = 
-    `<div id="display"></div>
+    `
+    <h1> Freelancers!</h1>
+    <div id="display"></div>
 
     `;
 }
