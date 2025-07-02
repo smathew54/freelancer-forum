@@ -44,7 +44,8 @@ const freelancerDisplayer = (freelancer) => {
     const $div = document.createElement("div");
     const $h3 = document.createElement("h3");
     const $a = document.createElement("a");
-    $h3.textContent = "Choo Choo, here comes the train";
+    //how do I get this to update so it is actually the freelancer from the list
+    $h3.textContent = freelancer;
     $div.append($h3);
     $div.append($a);
     return $div;
@@ -52,7 +53,7 @@ const freelancerDisplayer = (freelancer) => {
 
 
 //creates the worker
-const addFreelancers = () => {
+const genFreelancers = () => {
     const workerName = NAMES[Math.floor(Math.random() * NAMES.length)];
     const workerJob = OCCUPATIONS[Math.floor(Math.random() * OCCUPATIONS.length)];
     const workerSalary = Math.floor(Math.random(PRICE_RANGE.min) * PRICE_RANGE.max);
@@ -62,9 +63,17 @@ const addFreelancers = () => {
         "salary": workerSalary
 
     };
-    console.log(freelancer);
-    $app.querySelector('#display').appendChild(freelancerDisplayer(freelancer))
     return freelancer;
+}
+
+//freelancer displayer gets called here
+const addFreelancers = () => {
+    const freelancer = genFreelancers();
+    console.log(freelancer)
+    arrFreelancers.push(freelancer)
+    const $dom = freelancerDisplayer(freelancer);
+    document.querySelector('#display').appendChild($dom)
+
 }
 
 //const freelancers = document.querySelector("#app") (
